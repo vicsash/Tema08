@@ -3,7 +3,7 @@ plugins {
     id 'application'
 }
 
-group 'com.victorsashnev.tema07'
+group 'com.victorsashnev.tema08'
 version '1.0-SNAPSHOT'
 
 repositories {

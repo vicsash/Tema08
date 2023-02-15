@@ -14,10 +14,10 @@ public class Display extends JFrame {
     }
     public Display(int x,int y,String title){
         this(x,y,title);
-    }
-    public Display(int x ,int y, String title, boolean maximized){
-        this(x,y,DEfAULT_WIDTH,DEFAULT_HIEGHT,maximized,null,true,title);
     }*/
+    public Display(int x ,int y, String title, boolean maximized){
+        this(x,y,DEfAULT_WIDTH,DEFAULT_HIEGHT, title,null,true, maximized);
+    }
 
 
     public Display(int x ,int y, int width, int hieght, String title, String icon, boolean exitOnClose, boolean maximized){

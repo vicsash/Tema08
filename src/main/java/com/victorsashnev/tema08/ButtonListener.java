@@ -6,6 +6,6 @@ import java.awt.event.ActionListener;
 public class ButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Seha hecho click, en boton" + e.getSource());
+        System.out.println("Se ha hecho click, en boton" + e.getSource());
     }
 }

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 
 public class Intro {
         public static void main(String args[]){
@@ -15,6 +16,7 @@ public class Intro {
             //If comment line above the standart FlowLayout is top center horizontal
 
             ButtonListener buttonListener = new ButtonListener();
+            Scanner lector = new Scanner(System.in);
 
             //Not necessary
             //panel.setLayout(new FlowLayout());
@@ -26,6 +28,9 @@ public class Intro {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("Click");
+                        JButton button = (JButton) e.getSource();
+                        String text = lector.nextLine();
+                        button.setText(text);
                     }
                 });
 

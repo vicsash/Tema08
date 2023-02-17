@@ -1,4 +1,4 @@
-package com.victorsashnev.tema08;
+package com.victorsashnev.tema08.stategy;
 
 public class Entity {
     private int x;

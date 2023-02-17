@@ -12,7 +12,9 @@ public class Calculator {
         //Making the display
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         JFrame display = new JFrame();
+        display.setSize(500,500);
         display.setLayout(new BorderLayout());
+        //
 
         String[] calculator={"Ce","Off","Sqrt","/",
                 "7","8","9","*",
@@ -22,29 +24,28 @@ public class Calculator {
 
         //Making the screen panel and centering it
         JPanel screen = new JPanel();
-        screen.setLayout(new FlowLayout(FlowLayout.CENTER));
+        screen.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        screen.setPreferredSize(new Dimension(50,50));
 
         //Making the numbers for the calculator screen
         JPanel keys = new JPanel();
         keys.setLayout(new GridLayout(5,4));
 
-        JLabel button = new JLabel("SCREEN");
+        JLabel calculatorScreen = new JLabel("SCREEN",JLabel.RIGHT);
         final StringBuilder[] sb = {new StringBuilder()};
-        screen.add(button);
-        //display.add(screen);
-        //display.add(keys);
+        screen.add(calculatorScreen);
+
         for(int i = 0; i< calculator.length;i++){
             JButton button2 = new JButton(calculator[i]);
             keys.add(button2);
-
-
             button2.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    JButton button2 =(JButton) e.getSource();
-                    System.out.println(button2.getText());
+                    //ASK GERMAN
+                    //JButton button2 =(JButton) e.getSource();
+                    //System.out.println(button2.getText());
                     sb[0] =sb[0].append(button2.getText());
-                    button.setText(Arrays.toString(sb));
+                    calculatorScreen.setText(Arrays.toString(sb));
 
                 }
 

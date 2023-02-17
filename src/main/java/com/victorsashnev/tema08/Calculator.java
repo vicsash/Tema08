@@ -43,7 +43,7 @@ public class Calculator {
                 public void actionPerformed(ActionEvent e) {
                     JButton button2 =(JButton) e.getSource();
                     System.out.println(button2.getText());
-                   sb[0] =sb[0].append(button2.getText());
+                    sb[0] =sb[0].append(button2.getText());
                     button.setText(Arrays.toString(sb));
 
                 }

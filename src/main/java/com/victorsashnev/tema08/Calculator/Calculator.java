@@ -15,7 +15,11 @@ public class Calculator {
         buffer = new StringBuilder();
     }
     public void addSymbol(char c){
-
+        switch(state){
+            case RES:
+                buffer.append(c);
+                break;
+        }
     }
 
     public void addDigit(char c){

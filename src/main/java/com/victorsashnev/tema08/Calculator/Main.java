@@ -1,4 +1,4 @@
-package com.victorsashnev.tema08;
+package com.victorsashnev.tema08.Calculator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 
-public class Calculator {
+public class Main {
     //JTextField
     public static void main(String [] args){
         //Making the display
@@ -16,11 +16,11 @@ public class Calculator {
         display.setLayout(new BorderLayout());
         //
 
-        String[] calculator={"Ce","Off","Sqrt","/",
+        String[] calculator={"Off","On","CE","/",
                 "7","8","9","*",
                 "4","5","6","-",
                 "1","2","3","+",
-                "#","0","C","="};
+                "0",".","%","="};
 
         //Making the screen panel and centering it
         JPanel screen = new JPanel();

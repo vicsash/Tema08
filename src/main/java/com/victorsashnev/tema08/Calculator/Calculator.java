@@ -16,9 +16,43 @@ public class Calculator {
         state = State.OFF;
         buffer = new StringBuilder();
     }
-    public String addSymbol(char c){
+    private String getDisplay() {
+        if (buffer.length() > 0){
+            return buffer.toString();
+            //CORRECT LINE
+    }else if(buffer.length()<0){
+            return "0";
+        }else{
+            return "";
+        }
+    }
+    public String addExpresion(String expr){
+        for(int i = 0; i < expr.length();i++){
+            addSymbol(expr.charAt(i));
+        }
+        addSymbol('=');
+        return buffer.toString();
+    }
+
+    private void off(){
+        state = State.OFF;
         buffer.setLength(0);
+    }
+
+    public String addSymbol(char c){
+        if (c == 'c' && state != State.OFF){
+           reset();
+            return getDisplay();
+        } else if (c == 'f') {
+            off();
+            return getDisplay();
+        }
         switch(state){
+            case OFF:
+                if (c == 'o'){
+                    state = State.INIT;
+                }
+                break;
             case INIT:
                 if(Character.isDigit(c)){
                     buffer.append(c);
@@ -52,6 +86,7 @@ public class Calculator {
                 }
                 break;
             case BEGIN_OP2:
+                buffer.setLength(0);
                 if(Character.isDigit(c)){
                     buffer.append(c);
                     state = State.OP2;
@@ -71,10 +106,12 @@ public class Calculator {
                     parseOperation();
                     state = State.BEGIN_OP2;
                     operator = c;
-                    parseOp1(c);
                 }else if(c == '.'){
                     buffer.append("0").append(".");
                     state = State.OP2_DECIMAL;
+                }else if(c == '='){
+                    parseOperation();
+                    state = State.OP1;
                 }else if(isReset(c)){
                     reset();
                 }
@@ -84,7 +121,7 @@ public class Calculator {
                     buffer.append(c);
                 }else if (isOperator(c)){
                     parseOperation();
-                    state = State.BEGIN_OP2;
+                    state = State.OP1_DECIMAL;
                     operator = c;
                 }else if(isReset(c)){
                     reset();

@@ -15,7 +15,7 @@ public class Main {
         display.setSize(500,500);
         display.setLayout(new BorderLayout());
 
-        Calculator calculator = new Calculator();
+
         //Making the screen panel and centering it
         JPanel screen = new JPanel();
         screen.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -26,14 +26,35 @@ public class Main {
         JPanel keys = new JPanel();
         keys.setLayout(new GridLayout(5,4));
 
+
+
+
+
         JLabel calculatorScreen = new JLabel("SCREEN",JLabel.RIGHT);
         final StringBuilder[] sb = {new StringBuilder()};
         screen.add(calculatorScreen);
+        Calculator calculator = new Calculator();
         ActionListener listener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JButton button =(JButton)e.getSource();
-                calculatorScreen.setText(calculator.addSymbol(button.getText().charAt(0)));
+                char textButton;
+                switch (button.getText()){
+                    case "CE":
+                        textButton = 'c';
+                        break;
+                    case"ON":
+                        textButton = 'o';
+                        break;
+                    case "OFF":
+                        textButton = 'f';
+                        break;
+                    default:
+                        textButton = button.getText().charAt(0);
+                        break;
+
+                }
+                calculatorScreen.setText(calculator.addSymbol(textButton));
             }
         };
 
@@ -44,20 +65,18 @@ public class Main {
                 "0",".","%","="};
 
 
-
-
-
-        for(int i = 0; i< textButtons.length;i++){
-            JButton button2 = new JButton(textButtons[i]);
+        for (String textButton : textButtons) {
+            JButton button2 = new JButton(textButton);
             keys.add(button2);
             button2.addActionListener(listener);
         }
-
         display.getContentPane().add(screen,BorderLayout.NORTH);
         display.getContentPane().add(keys,BorderLayout.CENTER);
 
         display.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         display.setVisible(true);
+
+       display.repaint();
     }
 
 }

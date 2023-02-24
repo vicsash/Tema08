@@ -32,7 +32,7 @@ public class Main {
         ActionListener listener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JButton button =(JButton)e.getSource();
+                JButton button =(JButton) e.getSource();
                 calculatorScreen.setText(calculator.addSymbol(button.getText().charAt(0)));
             }
         };
